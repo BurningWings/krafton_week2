@@ -35,9 +35,11 @@ def gcd(a, b):
         최대공약수
     """
     # TODO: 유클리드 호제법 구현
+    if b == 0 :
+        return a
+    return gcd(b,a%b)
     # base case: b가 0이면 a 반환
     # recursive를 이용 
-    pass
 
 def gcd_iterative(a, b):
     """

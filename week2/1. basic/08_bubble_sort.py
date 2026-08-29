@@ -35,6 +35,10 @@ def bubble_sort(arr):
     n = len(arr)
     
     # TODO: 외부 반복문 - n-1번 반복
+    for i in range(n-1): # 0 ~ 5 for i in range(0, 5)
+        for j in range(n-i-1): #6 5 4 3 2 1 
+            if arr[j] > arr[j+1]:
+                arr[j] , arr[j+1] = arr[j+1] , arr[j] #[64, 34, 25, 12, 22, 11, 90]
     # 각 패스마다 가장 큰 원소가 끝으로 이동
     ## TODO: 내부 반복문 - 인접한 원소 비교
     ## 0부터 n-i-1까지 반복 (이미 정렬된 뒷부분 제외)
