@@ -38,13 +38,17 @@ def process_print_queue(jobs):
     """
     # TODO: deque로 큐 생성
     queue = deque(jobs)
-    
+    queue = list(queue)
     processed = []
     
     # TODO: 큐가 비어있지 않은 동안 반복
+    while len(queue) != 0:
+        # file = queue.poplift()
+        file = queue.pop(0)
+        print(f"처리: {file}")
+        processed.append(file)
     ## 큐에서 작업 꺼내기
     ## 작업 처리 (출력 및 리스트에 추가)
-    pass
     
     return processed
 

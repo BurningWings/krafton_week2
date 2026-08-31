@@ -39,7 +39,7 @@ def gcd(a, b):
         return a
     return gcd(b,a%b)
     # base case: b가 0이면 a 반환
-    # recursive를 이용 
+    # recursive를 이용
 
 def gcd_iterative(a, b):
     """
@@ -52,6 +52,9 @@ def gcd_iterative(a, b):
         최대공약수
     """
     # TODO: 반복문으로 구현
+    while b > 0:
+        a,b = b,a%b
+    return a
     # b가 0이 될 때까지 반복
     pass
 
@@ -66,7 +69,7 @@ def lcm(a, b):
         최소공배수
     """
     # TODO: LCM 계산
-    pass
+    return (a*b)//gcd(a,b)
 
 def extended_gcd(a, b):
     """
@@ -80,10 +83,22 @@ def extended_gcd(a, b):
         (gcd, x, y) 튜플
     """
     # TODO: 확장 유클리드 호제법 구현
+    if b != 0:
+        extended_gcd(b,a%b)
+    
     # base case: b가 0이면 (a, 1, 0) 반환    
+    if b == 0:
+            return (a,1,0)
+    
     # recursive case
+    g , x1 , y1 =extended_gcd(b,a%b)
     # 역추적하며 x, y 계산
-    pass
+    x = y1
+    y = x1-((a//b)*y1)
+    return (g,x,y)
+    
+
+
 
 def is_prime(n):
     """
@@ -97,8 +112,17 @@ def is_prime(n):
     """
     # TODO: 소수 판별 구현
     # n이 2보다 작으면 False
-    # 2부터 sqrt(n)까지 나누어 떨어지는지 확인    
+    if n < 2:
+        return False
+    # 2부터 sqrt(n)까지 나누어 떨어지는지 확인
+    # 2부터 7까지 전부다 % 가 0이면 솟수 라고 하는건가.
+    elif n % 2 ==1:
+        return True    
     # 3부터 sqrt(n)까지 홀수만 확인
+    elif n //3 == 0:
+        return True
+    else :
+        return False
     pass 
 
 # 테스트 케이스
