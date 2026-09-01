@@ -60,7 +60,7 @@
 def hanoi_count(n: int) -> int:
     """N 개의 원반을 옮기는 데 필요한 최소 이동 횟수( = 2^N - 1) 를 반환"""
     # TODO: 2^N - 1 을 정수로 반환하세요.
-    pass
+    return int(2**n-1)
 
 
 def hanoi_moves(n: int) -> list:
@@ -73,8 +73,21 @@ def hanoi_moves(n: int) -> list:
     """
     # TODO: N > 20 또는 N == 0 인 경우 [] 를 반환하세요.
     # TODO: 그 외에는 재귀로 이동 순서를 만들어 반환하세요.
-    pass
+    if n > 20 or n == 0:
+        return []
+    result = []
 
+    
+    # i_1.append(range(1 , n+1)) # 1부터 3까지
+    def moves(k,src,via,dst):
+        if k ==0: 
+            return
+        moves(k-1,src,dst,via)
+        result.append((src,dst))
+        moves(k-1,via,src,dst)
+        
+    moves(n,1,2,3)
+    return result
 
 if __name__ == "__main__":
     print("[테스트 1] N=0 (원반 없음, 옮길 것 없음)")
