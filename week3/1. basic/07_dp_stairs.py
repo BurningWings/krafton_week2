@@ -56,7 +56,7 @@ def climb_stairs(n):
     dp[1] = 2
  
     # TODO: 작은 문제부터 차례로 계산
-    for i in range(2,n+1):
+    for i in range(1,n+1):
         dp[i] = dp[i-1] + dp[i-2]
     return dp[n]
 
